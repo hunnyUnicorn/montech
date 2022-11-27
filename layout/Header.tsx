@@ -3,9 +3,9 @@ import ChessIcon from '@/public/chess-pawn-icon.svg'
 
 const Header = () => {
   return (
-    <div>
+    <div className='flex'>
       CHESS
-      <Image src={ChessIcon} alt='Logo' />
+      <Image src={ChessIcon} alt='Logo' width={20}/>
       GAMES
     </div>
   )
