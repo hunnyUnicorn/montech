@@ -6,12 +6,13 @@ interface Props {
   className?: string
   text?: string
   icon?: string
+  children?: React.ReactNode
 }
 
-const RoundButton = ({className, text, icon, onClick}: Props) => {
+const RoundButton = ({className, text, icon, onClick, children}: Props) => {
   return (
     <div
-      className={twMerge('w-[400px] py-2 px-4 relative rounded-full bg-blue-0 text-white', className)}
+      className={twMerge('py-2 px-4 relative rounded-md bg-blue-0 text-white text-center', className)}
       onClick={onClick}
     >
       <Image
@@ -23,6 +24,7 @@ const RoundButton = ({className, text, icon, onClick}: Props) => {
       <div>
         {text}
       </div>
+      {children}
     </div>
   )
 }

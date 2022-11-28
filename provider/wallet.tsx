@@ -15,6 +15,7 @@ export function useWallet() {
 export function WalletProvider({ children }: PropsWithChildren<{}>) {
   const router = useRouter()
   const [connected, setConnected] = useState(false)
+  const [isJoined, setIsJoined] = useState(false)
 
   const connectWallet = (which: number) => {
     if ( which === 1 ) {
@@ -23,9 +24,21 @@ export function WalletProvider({ children }: PropsWithChildren<{}>) {
     setConnected(true)
     router.push('list')
   }
+
+  const joinGame = () => {
+    setIsJoined(true)
+  }
+
+  const leftGame = () => {
+    setIsJoined(true)
+  }
+
   const value = {
     connected,
     connectWallet,
+    isJoined,
+    joinGame,
+    leftGame
   }
 
   return <WalletCtx.Provider value={value}>
