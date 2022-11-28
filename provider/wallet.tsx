@@ -1,4 +1,5 @@
 import { createContext, useContext, PropsWithChildren, useState } from 'react'
+import { useRouter } from 'next/router'
 
 export type WalletCtxProps = {
   connected: boolean
@@ -12,12 +13,15 @@ export function useWallet() {
 }
 
 export function WalletProvider({ children }: PropsWithChildren<{}>) {
+  const router = useRouter()
   const [connected, setConnected] = useState(false)
+
   const connectWallet = (which: number) => {
     if ( which === 1 ) {
 
     }
     setConnected(true)
+    router.push('list')
   }
   const value = {
     connected,

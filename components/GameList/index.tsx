@@ -1,32 +1,38 @@
 import MainLayout from '@/layout/Main'
 
-import { useWallet } from '@/provider/wallet'
-import RoundButton from '@/components/common/Buttons/round'
-import MetamaskIcon from '@/public/metamask-icon.svg'
-import CoinbaseIcon from '@/public/coinbase.svg'
+import List from './list'
+import Tabs from './tabs'
 
-const Landing = () => {
-  const { connectWallet } = useWallet()
-  const connectMetamask = () => {
-    connectWallet(1)
-  }
+const GameList = () => {
+  const mockAvailHeader = [ 'GAMEID', 'LIMIT', 'ENTER', 'NO. OF PLAYERS', 'DATE CREATED' ]
+  const mockAvailable = [
+    [28, 2, '0.5ETH', 0, '04/04/2022'],
+    [28, 2, '0.5ETH', 0, '04/04/2022'],
+    [28, 2, '0.5ETH', 0, '04/04/2022'],
+    [28, 2, '0.5ETH', 0, '04/04/2022'],
+    [28, 2, '0.5ETH', 0, '04/04/2022'],
+    [28, 2, '0.5ETH', 0, '04/04/2022'],
+  ]
+  const mockUnavailHeader = [ 'GAMEID', 'LIMIT', 'WINNER', 'AMOUNT WON', 'DATE CREATED' ]
+  const mockUnavailable = [
+    [28, 2, '0x449...103429', '0.003ETH', '04/04/2022'],
+    [28, 2, '0x449...103429', '0.003ETH', '04/04/2022'],
+    [28, 2, '0x449...103429', '0.003ETH', '04/04/2022'],
+    [28, 2, '0x449...103429', '0.003ETH', '04/04/2022'],
+    [28, 2, '0x449...103429', '0.003ETH', '04/04/2022'],
+    [28, 2, '0x449...103429', '0.003ETH', '04/04/2022'],
+    [28, 2, '0x449...103429', '0.003ETH', '04/04/2022'],
+  ]
   return (
     <MainLayout className='text-center'>
-      <div className='font-bold text-4xl'>
-        Welcome to Chess Games
-      </div>
-      <div className='text-gray-500 mt-4'>
-        Log in with your wallet to be able to authenticate and play games
-      </div>
-      <RoundButton className='mt-4' text='Sign in with metamask' icon={MetamaskIcon} onClick={connectMetamask}/>
-      <RoundButton
-        className='mt-4 bg-transparent border border-gray-500 text-black'
-        text='Sign in with Coinbase Wallet'
-        icon={CoinbaseIcon}
-      />
-      <a className='mt-8 underline cursor-pointer'>Show more options</a>
+      <Tabs
+        headers={['Available Games', 'Unavailabl Games']}
+      >
+        <List data={mockAvailable} header={mockAvailHeader}/>
+        <List data={mockUnavailable} header={mockUnavailHeader}/>
+      </Tabs>
     </MainLayout>
   )
 }
 
-export default Landing
+export default GameList
