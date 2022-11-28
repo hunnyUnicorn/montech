@@ -4,6 +4,9 @@ import { useRouter } from 'next/router'
 export type WalletCtxProps = {
   connected: boolean
   connectWallet: (which: number) => void
+  isJoined: boolean
+  joinGame: () => void
+  leftGame: () => void
 }
 
 const WalletCtx = createContext<WalletCtxProps>({} as WalletCtxProps)

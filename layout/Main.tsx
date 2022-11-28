@@ -1,5 +1,8 @@
 import { twMerge } from 'tailwind-merge'
+
+import { useWallet } from '@/provider/wallet'
 import Header from './Header'
+import Board from '@/public/board.jpg'
 
 interface Props {
   className?: string
@@ -7,11 +10,17 @@ interface Props {
 }
 
 const MainLayout = ({className, children}: Props) => {
+  const { isJoined } = useWallet()
+
   return (
     <div className='px-16'>
       <Header />
-      <div className='fixed top-0 left-0 w-screen h-screen bg-[url("../public/board.jpg")] z-[-10]'/>
-      <div className={twMerge(className, 'w-screen h-screen absolute top-0 left-0 flex flex-col items-center justify-center')}>
+      {
+        isJoined ?
+        <div className='fixed top-0 left-0 w-screen h-screen bg-dark-0 z-[-10]'/>:
+        <div className={`fixed top-0 left-0 w-screen h-screen bg-[url("${Board.src}")] z-[-10]`}/> 
+      }
+      <div className={twMerge('w-screen h-screen absolute top-0 left-0 flex flex-col items-center justify-center', className)}>
         {children}
       </div>
     </div>
