@@ -10,10 +10,10 @@ const GameBoard = () => {
       <div className='absolute top-20 left-20 text-white '>
         &lt;&nbsp;&nbsp;Go Back
       </div>
-      <div className='w-[50%]'>
-        <UserComponent name='Opponent'/>
-        <div className={`w-[640px] h-[640px] bg-[url("${ChessBoard.src}")]`}/>
-        <UserComponent name='My Avatar'/>
+      <div className='w-[480px]'>
+        <UserComponent name='Opponent' className='mb-4'/>
+        <div className={`w-[480px] h-[480px]`} style={{backgroundImage:`url(${ChessBoard.src})`}}/>
+        <UserComponent name='My Avatar' className='mt-4'/>
       </div>
     </MainLayout>
   )

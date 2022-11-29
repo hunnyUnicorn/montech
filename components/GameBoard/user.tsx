@@ -1,13 +1,15 @@
 import Image from 'next/image'
+import { twMerge } from 'tailwind-merge'
 import UserIcon from '@/public/user.svg'
 
 interface Props {
   name?: string
+  className?: string
 }
 
-const UserComponent = ({name}: Props) => {
+const UserComponent = ({name, className}: Props) => {
   return (
-    <div className='w-full flex justify-between'>
+    <div className={twMerge('w-full flex justify-between', className)}>
       <div className='flex gap-2 text-gray-300 py-2'>
         <Image className='bg-dark-1 rounded-md' src={UserIcon} alt='' width={30}/>
         {name}

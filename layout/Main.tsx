@@ -18,7 +18,7 @@ const MainLayout = ({className, children}: Props) => {
       {
         isJoined ?
         <div className='fixed top-0 left-0 w-screen h-screen bg-dark-0 z-[-10]'/>:
-        <div className={`fixed top-0 left-0 w-screen h-screen bg-[url("${Board.src}")] z-[-10]`}/> 
+        <div className={`fixed top-0 left-0 w-screen h-screen z-[-10]`} style={{backgroundImage:`url(${Board.src})`}}/> 
       }
       <div className={twMerge('w-screen h-screen absolute top-0 left-0 flex flex-col items-center justify-center', className)}>
         {children}
